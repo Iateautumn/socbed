@@ -1,0 +1,82 @@
+1
+
+
+Attacker doesn't exist!\n
+Client doesn't exist!\n
+Company Router doesn't exist!\n
+DMZ Server doesn't exist!\n
+Log Server doesn't exist!\n
+Internal Server doesn't exist!\n
+Internet Router doesn't exist!\n
+
+
+
+Client doesn't exist!\n
+
+
+
+
+
+{d59e8e4b-797f-48d4-9ab8-e1638d7b521a} {740f3bcc-88e7-4c3a-9af4-92c17bc140ae}
+
+
+
+
+
+
+
+
+
+
+
+Client doesn't exist!\n
+
+
+
+
+
+{d59e8e4b-797f-48d4-9ab8-e1638d7b521a} {740f3bcc-88e7-4c3a-9af4-92c17bc140ae} {18caee2b-cb72-4717-8bb2-4c826381ca63}
+
+
+Client doesn't exist!\n
+
+
+
+
+
+
+
+
+Client doesn't exist!\n
+
+
+
+
+
+{d59e8e4b-797f-48d4-9ab8-e1638d7b521a} {740f3bcc-88e7-4c3a-9af4-92c17bc140ae} {18caee2b-cb72-4717-8bb2-4c826381ca63}
+
+
+Client doesn't exist!\n
+
+
+
+
+
+
+
+
+Client doesn't exist!\n
+
+
+
+
+
+{d59e8e4b-797f-48d4-9ab8-e1638d7b521a} {740f3bcc-88e7-4c3a-9af4-92c17bc140ae}
+
+
+
+
+
+
+
+

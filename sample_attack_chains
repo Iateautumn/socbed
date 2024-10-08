@@ -1,0 +1,111 @@
+use misc_exfiltration
+run
+back
+sleep 3
+sleep 10
+use infect_email_exe
+run
+back
+sleep 4
+use c2_change_wallpaper
+run
+back
+sleep 4
+use c2_take_screenshot
+run
+back
+sleep 2
+use disinfect_client
+run
+back
+sleep 5
+sleep 6
+use misc_download_malware
+run
+back
+sleep 2
+use misc_execute_malware
+run
+back
+sleep 5
+use misc_set_autostart
+run
+back
+sleep 2
+use disinfect_client
+run
+back
+sleep 2
+sleep 9
+use infect_email_exe
+run
+back
+sleep 3
+use c2_change_wallpaper
+run
+back
+sleep 3
+use c2_take_screenshot
+run
+back
+sleep 4
+use disinfect_client
+run
+back
+sleep 2
+sleep 9
+use misc_sqlmap
+run
+back
+sleep 5
+sleep 4
+use misc_sqlmap
+run
+back
+sleep 3
+sleep 9
+use infect_flashdrive_exe
+run
+back
+sleep 5
+use c2_change_wallpaper
+run
+back
+sleep 3
+use c2_take_screenshot
+run
+back
+sleep 4
+use disinfect_client
+run
+back
+sleep 2
+sleep 5
+use misc_sqlmap
+run
+back
+sleep 2
+sleep 10
+use misc_sqlmap
+run
+back
+sleep 5
+sleep 5
+use infect_flashdrive_exe
+run
+back
+sleep 3
+use c2_hashdump
+run
+back
+sleep 4
+use c2_exfiltration
+run
+back
+sleep 5
+use disinfect_client
+run
+back
+sleep 3
+sleep 4
+exit

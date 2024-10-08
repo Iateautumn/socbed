@@ -1,0 +1,14 @@
+---
+- name: Copy delete_old_logs.sh to /usr/local/bin
+  copy:
+    src: delete_old_logs.sh
+    dest: /root/delete_old_logs.sh
+    mode: '0755'  # 设置脚本为可执行权限
+
+- name: Create cron job for cleaning ELK logs
+  cron:
+    name: "Clean ELK logs daily"
+    minute: "0"
+    hour: "2"  # 每天凌晨2点执行
+    job: "/root/delete_old_logs.sh"
+    user: root

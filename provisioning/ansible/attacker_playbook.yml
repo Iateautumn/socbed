@@ -21,6 +21,7 @@
 
 
   roles:
+    - setup_proxy
     - ntp_kali
     - ftp
     - external_mail_handler
@@ -33,3 +34,4 @@
     - ssh_config
     - dosfstools
     - grc
+    - clean_proxy1

@@ -23,6 +23,7 @@
         state: absent
 
   roles:
+    - setup_proxy
     - basic_packages
     - basic_tools
     - auditbeat
@@ -33,6 +34,7 @@
     - postfix
     - dovecot
     - dvwa
+    - clean_proxy
 
   post_tasks:
     - name: Set up the DVWA database

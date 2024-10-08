@@ -16,6 +16,7 @@
       include_vars: host_vars/logserver
 
   roles:
+    - setup_proxy
     - basic_packages
     - basic_tools
     - {
@@ -30,10 +31,12 @@
         elasticsearch_version: "{{elastic_stack_version}}",
         when: install_elk == true
       }
+    - clean_proxy
     - {
         role: elasticsearch_templates,
         when: install_elk == true
       }
+    - setup_proxy1
     - {
         role: kibana,
         kibana_version: "{{elastic_stack_version}}",
@@ -57,7 +60,9 @@
         role: spark,
         when: install_spark == true
       }
+    - clean_proxy1
     - {
         role: kibana_customizing,
         when: customize_kibana == true
       }
+

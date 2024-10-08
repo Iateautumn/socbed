@@ -1,0 +1,4 @@
+- include: setup_proxy.yml
+- name: Debug proxy configuration directory creation
+  debug:
+    msg: "Proxy configuration directory created"

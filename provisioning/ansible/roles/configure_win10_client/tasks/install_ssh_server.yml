@@ -10,6 +10,7 @@
   win_get_url:
     url: "{{ openssh_download_url }}"
     dest: "{{ openssh_temporary_dir }}\\openssh.zip"
+    timeout: 600
 
 - name: SSH - Unzip openssh in extraction dir
   win_unzip:

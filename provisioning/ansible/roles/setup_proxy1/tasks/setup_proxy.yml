@@ -1,0 +1,11 @@
+---
+- name: Set up environment variables for proxy
+  lineinfile:
+    path: /etc/environment
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - "http_proxy=http://192.168.1.130:7890"
+    - "https_proxy=http://192.168.1.130:7890"
+    - "ftp_proxy=http://192.168.1.130:7890"
+    - "no_proxy=localhost,127.0.0.1"

@@ -1,0 +1,7 @@
+---
+- hosts: logserver
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+  become: yes
+  roles:
+    - role: delete_old_logs

@@ -1,0 +1,8 @@
+---
+- name: Set up DNS
+  lineinfile:
+    path: /etc/resolv.conf
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - "nameserver 8.8.8.8"

@@ -5,3 +5,4 @@
     state: present
     version: 3.7.3
     pinned: yes
+  timeout: 1000

@@ -11,7 +11,10 @@ VM_NAMES=(
 )
 RUNNING_VMS=`vboxmanage list runningvms | sed -e 's/["a-zA-Z0-9 ]*//'`
 CLONED_VMS=`vboxmanage list vms | grep 'Clone'| sed -e 's/["a-zA-Z0-9 ]*//'`
-
+###
+echo ${RUNNING_VMS[@]} >> /home/denghmh/projects/socbed/socbed/log.txt
+echo ${CLONED_VMS[@]} >> /home/denghmh/projects/socbed/socbed/log.txt
+###
 echo "Powering off any VMs that are still running..."
 IFS=$'\n'
 for RUNNINGVM in ${RUNNING_VMS[@]}; do
@@ -32,9 +35,15 @@ echo "Deleting backup snapshots and restoring the original one..."
 for VMNAME in ${VM_NAMES[@]}; do
 	if ! vboxmanage showvminfo "$VMNAME" > /dev/null 2>&1;then
 		printf "$VMNAME doesn't exist!\n"
+		###
+		echo "$VMNAME doesn't exist!\n" >> /home/denghmh/projects/socbed/socbed/log.txt
+		###
 		continue
 	fi
 	SNAPSHOTS=`vboxmanage snapshot "$VMNAME" list | grep -E ' *Name: Backup[0-9]* \(UUID: ([a-z0-9-])+\)'`
+	###
+	echo ${SNAPSHOTS[@]} >> /home/denghmh/projects/socbed/socbed/log.txt
+	###
 	for SNAPSHOT in $SNAPSHOTS; do
 		SNAPSHOT_UUID=`echo $SNAPSHOT | sed -e 's/ *Name: Backup[0-9]* (UUID: //' | sed -e 's/).*//'`
 		vboxmanage snapshot "$VMNAME" delete $SNAPSHOT_UUID 
@@ -42,3 +51,6 @@ for VMNAME in ${VM_NAMES[@]}; do
 	vboxmanage snapshot "$VMNAME" restorecurrent
 done
 echo "Done."
+#echo ${RUNNING_VMS【@】}
+#echo ${CLONED_VMS[@]}
+

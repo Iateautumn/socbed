@@ -1,0 +1,14 @@
+---
+- name: Update mailing.py timeout configuration on multiple hosts
+  hosts: clients
+  tasks:
+    - name: Replace self._timeout = 5 with self._timeout = 10 in mailing.py
+      win_lineinfile:
+        path: C:\breach\userbehavior\userbehavior\mailing\mailing.py
+        regexp: 'self._timeout = 5'
+        line: '        self._timeout = 10'
+        backup: yes
+
+    - name: Reboot the host after configuration change
+      win_reboot:
+        reboot_timeout: 600  # 设置超时时间为 600 秒，等待主机重启完成

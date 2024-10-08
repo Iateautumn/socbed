@@ -156,7 +156,8 @@ class SessionHandler:
     def start_session(self):
         if self.session_running:
             raise SessionHandlerException("Session already running")
-        logger.info("Starting TBF Session")
+        logger.info("Startin"
+                    "g TBF Session")
         self.create_backup_snapshots(self.server_and_client_vms())
         self.create_clones()
         self.start_all_vms()
@@ -217,6 +218,7 @@ class SessionHandler:
         clone_vms = [clone.vm for clone in self.clones]
         try:
             self.poweroff_vms(self.config.server_vms + clone_vms)
+            print(self.config.server_vms + clone_vms)
         except SessionHandlerException as e:
             logger.warning("Exception: {e}".format(e=e))
 

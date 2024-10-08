@@ -23,6 +23,7 @@
         state: absent
 
   roles:
+    - setup_proxy
     - basic_packages
     - basic_tools
     - auditbeat
@@ -30,3 +31,4 @@
     - rsyslog_ISO8601
     - rsyslog_forwarding
     - samba
+    - clean_proxy

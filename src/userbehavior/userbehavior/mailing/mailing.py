@@ -46,7 +46,7 @@ class Mailing:
         self.mailing_profile = mailing_profile or self.default_mailing_profile()
         self.mailer_factory = mailer_factory or self.default_mailer_factory()
         self.end_time = None
-        self._timeout = 5
+        self._timeout = 15
         self._mailer = None
 
     @classmethod

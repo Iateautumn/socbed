@@ -114,7 +114,8 @@
     {
       "extra_arguments": [
         "-i",
-        "../ansible/hosts"
+        "../ansible/hosts",
+        "-vvv"
       ],
       "playbook_file": "../ansible/logserver_playbook.yml",
       "type": "ansible"
