@@ -5,6 +5,7 @@
 
   roles:
     - configure_company_router
+    - post_suricata
     - rsyslog_install_ipfire
     - rsyslog_ISO8601
     - rsyslog_forwarding

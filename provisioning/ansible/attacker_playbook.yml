@@ -25,6 +25,7 @@
     - ntp_kali
     - ftp
     - external_mail_handler
+    - post_external_mail_handler
     - sqlmap_wordlist
     - rsyslog_ISO8601
     - virtualhost

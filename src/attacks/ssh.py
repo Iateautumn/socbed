@@ -24,6 +24,8 @@ import paramiko
 from attacks.util import print_command
 
 
+import base64
+
 class SSHTarget(SimpleNamespace):
     name = ""
     hostname = ""
@@ -58,7 +60,7 @@ class BREACHSSHClient(paramiko.SSHClient):
 
     def exec_command_on_target(self, command, printer):
         self.connect_to_target()
-        print_command(command)
+        #print_command(command)
         command = self.wrap_command(command)
         stdin, stdout, stderr = self.exec_command(command, timeout=self.channel_timeout, get_pty=True)
         self.stdin = stdin
@@ -69,7 +71,6 @@ class BREACHSSHClient(paramiko.SSHClient):
     def exec_commands_on_target(self, commands, printer):
         self.connect_to_target()
         for command in commands:
-            print_command(command)
             command = self.wrap_command(command)
             stdin, stdout, stderr = self.exec_command(command, timeout=self.channel_timeout, get_pty=True)
             self.stdin = stdin
@@ -122,9 +123,15 @@ class BREACHSSHClient(paramiko.SSHClient):
     @staticmethod
     def print_windows_output(msg_file, printer):
         # Removes certain ANSI escape codes (J, m, H) to prevent the printed console output from being malformed
-        ansi_escape = re.compile(r'\x1b\[(?:[0-?]*[JmH])')
+        #ansi_escape = re.compile(r'\x1b\[(?:[0-?]*[JmH])')
+        ansi_escape = re.compile(r'\x1B[@-_][0-?]*[ -/]*[@-~]')
+
         while not msg_file.channel.exit_status_ready() or msg_file.channel.recv_ready():
-            printer.print(ansi_escape.sub("", msg_file.readline()))
+            str = ansi_escape.sub("", msg_file.readline())
+            #str = str.encode('utf-8')
+            #str = base64.b64encode(str)
+            #str = str.decode('utf-8')
+            printer.print(str)
 
     @staticmethod
     def write_lines(stdin, lines):

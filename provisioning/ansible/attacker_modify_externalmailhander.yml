@@ -1,0 +1,32 @@
+---
+- name: Modify external_mail_handler.py and restart service
+  hosts: attacker
+  become: yes
+  tasks:
+    - name: Backup external_mail_handler.py file
+      copy:
+        src: /usr/bin/external_mail_handler.py
+        dest: /usr/bin/external_mail_handler.py.bak
+        remote_src: yes
+
+    - name: Replace data with data, **kwargs in process_message function
+      replace:
+        path: /usr/bin/external_mail_handler.py
+        regexp: 'def process_message\(self, peer, mailfrom, rcpttos, data\):'
+        replace: 'def process_message(self, peer, mailfrom, rcpttos, data, **kwargs):'
+
+    - name: Replace data with data.decode('UTF-8') in mime_string_to_text_mail
+      replace:
+        path: /usr/bin/external_mail_handler.py
+        regexp: 'mail \= mime_string_to_text_mail\(data\)'
+        replace: 'mail = mime_string_to_text_mail(data.decode("UTF-8"))'
+
+    - name: Remove the backup file
+      file:
+        path: /usr/bin/external_mail_handler.py.bak
+        state: absent
+
+    - name: Restart externalmailhandler service
+      service:
+        name: externalmailhandler
+        state: restarted

