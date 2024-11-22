@@ -205,7 +205,7 @@ class Messenger:
 
     def _connect_to_remote_socket(self):
         while not self.data_socket:
-            self.data_socket = ssl.wrap_socket(
+            self.data_socket = ssl.SSLContext.wrap_socket(
                 socket.socket(socket.AF_INET, socket.SOCK_STREAM),
                 server_side=False,
                 cert_reqs=ssl.CERT_REQUIRED,
@@ -230,7 +230,7 @@ class Messenger:
 
     def _wait_for_data_socket(self):
         new_sock, _ = self.listening_socket.accept()
-        self.data_socket = ssl.wrap_socket(
+        self.data_socket = ssl.SSLContext.wrap_socket(
             new_sock,
             server_side=True,
             certfile=os.path.join(self.cert_dir, "cert.pem"),

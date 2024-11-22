@@ -22,13 +22,8 @@ class Printer:
 
 
 class ConsolePrinter(Printer):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
     def print(self, msg):
-        #print(msg)
         super().print(msg=msg)
-        #print("here", end='')
         print(msg, end="")
 
 
