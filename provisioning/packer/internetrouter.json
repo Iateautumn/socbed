@@ -15,10 +15,11 @@
       "guest_os_type": "Linux_64",
       "vm_name": "Internet Router",
       "guest_additions_mode": "disable",
+      "memory": "2048",
       "headless": "true",
-      "iso_checksum": "sha256:7793981fbe39cb1fa3cb2f89dd1472751d502823b2fc333449171af1bc225f8f",
+      "iso_checksum": "sha256:ae9c1f9639e30e9e88b7363426d69297300cf15543498bef0b18e27f3dd66222",
       "iso_urls": [
-        "https://downloads.ipfire.org/releases/ipfire-2.x/2.25-core141/ipfire-2.25.x86_64-full-core141.iso"
+        "https://downloads.ipfire.org/releases/ipfire-2.x/2.29-core189/ipfire-2.29-core189-x86_64.iso"
       ],
       "ssh_host": "{{user `ssh_host_addr`}}",
       "ssh_password": "breach",
@@ -46,20 +47,17 @@
       "boot_command": [
         "<enter><wait10s>",
         "<tab><enter>",
-        "<wait10s><enter>",
-        "<wait10s><tab><spacebar><tab><spacebar>",
+        "<wait><enter>",
+        "<wait><enter>",
+        "<wait><tab><enter>",
+        "<wait60s><enter>",
+        "<wait30s><enter><wait><enter>",
         "<wait><spacebar>",
-        "<wait><tab><spacebar>",
-        "<wait60s>",
-        "<spacebar>",
-        "<wait60s>",
-        "<tab><spacebar>",
-        "<wait4s><tab><spacebar>",
         "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>internetrouter<tab><spacebar>",
         "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>localdomain<tab><spacebar>",
         "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>breach<tab>breach<tab><spacebar>",
-        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>breach<tab>breach<tab><spacebar>",       
-	"<wait10s><tab><spacebar>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>breach<tab>breach<tab><spacebar>",
+              "<wait10s><tab><spacebar>",
         "<wait><down><down><tab><spacebar>",
         "<wait><down><tab><spacebar>",
         "<wait><tab><spacebar>",
@@ -80,9 +78,9 @@
         "<wait><down><tab><spacebar>",
         "<wait><tab><spacebar><tab><tab><tab><tab><spacebar>",
         "<wait><tab><tab><spacebar>",
-        "<wait><down><tab><tab><spacebar>",
+        "<wait><tab><tab><spacebar>",
         "<wait><tab><spacebar>",
-        "<wait><spacebar>",    
+        "<wait><spacebar>",
         "<wait60s>",
         "root<wait><enter>breach<wait><enter>",
         "<wait20s>iptables -I INPUT -p tcp --dport 444 -j ACCEPT<enter>",
@@ -146,4 +144,3 @@
     }
   ]
 }
-

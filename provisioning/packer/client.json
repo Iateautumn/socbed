@@ -4,7 +4,7 @@
     {
       "communicator": "winrm",
       "cpus": 2,
-      "disk_size": "24576",
+      "disk_size": "51200",
       "export_opts": [
         "--manifest",
         "--vsys",
