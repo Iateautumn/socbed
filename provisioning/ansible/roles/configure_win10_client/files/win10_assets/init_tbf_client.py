@@ -84,6 +84,8 @@ class Main:
         logger.info("Initalization script for client started!")
         self.args = self.parse_args(argv=argv)
         self.get_network_parameters()
+        if self.client_id == 254:
+            return
         if self.is_configured_faulty():
             self.leave_domain()
             self.reset_auto_logon()
