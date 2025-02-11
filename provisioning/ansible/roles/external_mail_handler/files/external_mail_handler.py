@@ -95,8 +95,11 @@ class Responder:
                     ":" + str(self.smtp_out.server_port))
         self.init_controller()
         self.controller.start()  # detaches from current thread
-        input('SMTP server running. Press Return to stop server and exit.')
-        self.controller.stop()
+        try:
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            self.controller.stop()
 
     def init_controller(self):
         handler = CustomHandler(self.smtp_out)

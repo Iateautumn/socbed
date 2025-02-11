@@ -15,6 +15,8 @@ def get_urls_in_text(text):
     regex = re.compile("((?P<protocol>https?://)?(([\da-z.-]+)\.([a-z\.]{2,6})([/\w.-]*)*/?))")
     urls = list()
     for match in regex.finditer(text):
+        if "dmzserver.localdomain" in match.group():
+            continue
         if match.group("protocol") is None:
             urls.append("http://" + match.group())
         else:
