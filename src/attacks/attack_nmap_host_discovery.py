@@ -7,12 +7,12 @@ class NmapHostDiscoveryAttackOptions(AttackOptions):
     target: str = "Target range or IP"
 
     def _set_defaults(self) -> None:
-        self.target = "192.168.56.1/23"
+        self.target = "172.18.0.0/24"
 
 
 class NmapHostDiscoveryAttack(Attack):
     info: AttackInfo = AttackInfo(
-        name="misc_nmap_host_discovery",
+        name="info_nmap_host_discovery",
         description="Scan the network for available hosts",
     )
     options_class = NmapHostDiscoveryAttackOptions

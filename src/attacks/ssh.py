@@ -60,7 +60,6 @@ class BREACHSSHClient(paramiko.SSHClient):
 
     def exec_command_on_target(self, command, printer):
         self.connect_to_target()
-        print_command(command)
         command = self.wrap_command(command)
         stdin, stdout, stderr = self.exec_command(command, timeout=self.channel_timeout, get_pty=True)
         self.stdin = stdin

@@ -18,6 +18,7 @@
 
 import re
 import socket
+import time
 from contextlib import contextmanager
 from types import SimpleNamespace
 
@@ -43,7 +44,11 @@ class AttackOptions(SimpleNamespace):
 
     @classmethod
     def _options(cls):
-        return [att for att in dir(cls) if not att.startswith("_")]
+        options = []
+        for base in cls.__mro__:
+            if base is not object:
+                options.extend([att for att in base.__dict__ if not att.startswith("_")])
+        return list(set(options))
 
     def _set_defaults(self):
         pass
@@ -114,3 +119,22 @@ class Attack:
         if not any(indicator in ansi_escape.sub("", line) for line in "".join(lp.printed).split("\n")):
             raise AttackException(
                 f"Attack failed: Indicator \"{indicator}\" not found in output")
+
+    def exec_commands_on_shell(self, commands):
+        channel = self.ssh_client.invoke_shell()
+        for command in commands:
+            channel.send(command + "\n")
+            time.sleep(2)
+
+            output = ""
+            while True:
+                if channel.recv_ready():
+                    part = channel.recv(1024).decode("utf-8")
+                    output += part
+                    self.print(part)
+                else:
+                    time.sleep(0.5)
+                    if output.endswith("$ ") or output.endswith("# ") or output.endswith('> ') or output.endswith(
+                            '>') :
+                        break
+        self.print("\n")

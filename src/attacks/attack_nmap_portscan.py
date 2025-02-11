@@ -9,14 +9,14 @@ class NmapPortscanAttackOptions(AttackOptions):
     ports: str = "Ports to scan, set to 'ics' to scan a list of ICS-specific ports"
 
     def _set_defaults(self) -> None:
-        self.target = "192.168.56.101"
+        self.target = "172.18.0.2"
         self.scan_type = "-sT -sU"
-        self.ports = "top10"
+        self.ports = "top1000"
 
 
 class NmapPortscanAttack(Attack):
     info = AttackInfo(
-        name="misc_nmap_portscan",
+        name="info_nmap_portscan",
         description="Scan for open ports",
     )
     options_class = NmapPortscanAttackOptions

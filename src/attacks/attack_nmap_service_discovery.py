@@ -16,8 +16,8 @@ class NmapServiceDiscoveryAttackOptions(AttackOptions):
     script: str = "Nmap script to run"
 
     def _set_defaults(self) -> None:
-        self.target = "192.168.56.101"
-        self.port = ""
+        self.target = "172.18.0.2"
+        self.port = "25,80,222,444,587,8080"
         self.exclude_ports = ""
         self.script = ""
         self.scan_type = "comprehensive"
@@ -34,7 +34,7 @@ class NmapServiceDiscoveryAttackOptions(AttackOptions):
 
 class NmapServiceDiscoveryAttack(Attack):
     info = AttackInfo(
-        name="misc_nmap_service_discovery",
+        name="info_nmap_service_discovery",
         description="Scan for exposed services",
     )
     options_class = NmapServiceDiscoveryAttackOptions

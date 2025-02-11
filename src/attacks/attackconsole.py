@@ -110,7 +110,7 @@ class SubAttackConsole(Cmd):
         self.options_class = self.attack_class.options_class
         self.attack_options = self.options_class._options()
         self.attack_option_descriptions = {
-            option: self.options_class.__dict__[option]
+            option: getattr(self.options_class, option, None)
             for option in self.attack_options}
         self.attack = self.attack_class(printer=ConsolePrinter())
         self.prompt = f"attackconsole ({self.attack_class.info.name}) > "
