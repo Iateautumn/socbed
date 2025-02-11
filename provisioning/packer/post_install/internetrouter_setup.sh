@@ -11,8 +11,9 @@ echo "USP_ISP_NAMESERVERS=off" > /var/ipfire/dns/settings
 echo "QNAME_MIN=standard" >> /var/ipfire/dns/settings
 echo "PROTO=UDP" >> /var/ipfire/dns/settings
 echo "ENABLE_SAFE_SEARCH=off" >> /var/ipfire/dns/settings
+echo "3,8.8.8.8,,enabled," >> /var/ipfire/dns/servers
 
 /etc/init.d/unbound restart
-
+sleep 10
 pakfire update
 pakfire install python3-setuptools -y

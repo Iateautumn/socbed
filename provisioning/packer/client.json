@@ -24,7 +24,7 @@
       "iso_checksum": "md5:{{user `iso_checksum`}}",
       "iso_url": "{{user `iso_url`}}",
       "keep_registered": "true",
-      "memory": "2048",
+      "memory": "4096",
       "output_directory": "{{user `vm_output`}}",
       "shutdown_command": "shutdown /s /f /t 5 /c \"Packer Shutdown\"",
       "headless": "true",
